@@ -6,3 +6,9 @@ In this project, I have using the code from [DCGAN_example](https://github.com/p
 As for the generator, it generates random pictures similar the the data it is fed. Besides generating only random images, I want to control the content of an iamge based on its class label (Dataset which I used for this project were MNIST hand-written digits and CiFar10). The idea of using conditional GAN is based on [Conditional Generative Adversarial Nets](https://arxiv.org/abs/1411.1784). In addtional to using just a one-hot embedding for the context information, I used also pre-trained GloVe word vectors to embed the context information. 
 
 The results seems reasonable with using one-hot embedding while the 300d word embedding may be too complicated that further experiments need to involve dropout regularization.
+
+Other than the embedding method, as for the concatenated context informatiton, I used both addtional MLP layers and additional decov-layers for further traing. 
+
+To run the code, you can use command line like: 
+
+python cdcgan.py --dataset cifar10 --dataroot cifar10 --outf cifar10_out_emb_0.9_decov --cuda --emb --niter 250 --beta1 0.9
